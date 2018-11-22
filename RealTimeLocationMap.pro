@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui webenginewidgets
+QT       += core gui webengine webenginewidgets
 QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

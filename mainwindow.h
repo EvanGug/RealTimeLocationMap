@@ -20,6 +20,7 @@ public:
 private slots:
     void on_decodeFileButton_clicked();
     void on_readButton_clicked();
+    void on_sendTextButton_clicked();
 
 private:
     Ui::MainWindow *ui;

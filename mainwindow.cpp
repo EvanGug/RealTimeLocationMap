@@ -57,3 +57,8 @@ void MainWindow::on_readButton_clicked()
         ui->tableWidget->setItem(i, 7, new QTableWidgetItem(data.at(i).m_frequence));
     }
 }
+
+void MainWindow::on_sendTextButton_clicked()
+{
+    ui->mapTab->onSendTextButtonClicked();
+}
