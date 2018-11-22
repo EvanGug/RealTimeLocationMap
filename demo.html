@@ -14,17 +14,7 @@
 <script type="text/javascript" src="js/area.js"></script>
 </head>
 <body>
-		
-	<!-- 11 3000 3000
-	12 5000 5000
-	13 9000 9000 -->
 <div id="container"></div>
-<!-- <div style="width:2000px;height:2000px;border:1px solid gray" id="container"></div> -->
-<br>
-<!-- <input type="button" value="findtiles" onclick="findtiles();"> -->
-<!-- <input type="button" value="downImg" onclick="clickDown()"> -->
-<br>
-<!-- <div id="list"></div> -->
 </body>
 </html>
 
@@ -60,17 +50,8 @@ map.centerAndZoom(point,6);                     // 初始化地图,设置中心�
 
 map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放 
 map.enableDragging(true);    
-map.addControl(new BMap.NavigationControl());    
-//map.addControl(new BMap.ScaleControl());    
-//map.addControl(new BMap.OverviewMapControl());
-//map.addControl(new BMap.MapTypeControl());
-//map.addControl(new BMap.NavigationControl());
-map.enableKeyboard();                         // 启用键盘操作。  
-//map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-//map.setCurrentCity('石家庄')
-<!-- var point = new BMap.Point(116.404, 39.915); -->
-    <!-- var marker = new BMap.Marker(point); -->
-    <!-- map.addOverlay(marker); -->
+map.addControl(new BMap.NavigationControl());
+
 var b = new BMap.Bounds(new BMap.Point(115.463049,39.657865),new BMap.Point(117.029202,40.541792)); // 范围 左下角，右上角的点位置 
 try {    // js中尽然还有try catch方法，可以避免bug引起的错误
 	BMapLib.AreaRestriction.setBounds(map, b); // 已map为中心，已b为范围的地图
@@ -92,15 +73,13 @@ try {    // js中尽然还有try catch方法，可以避免bug引起的错误
 // 		new BMap.Point(116.404, 42.915)
 // 	], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});
 // map.addOverlay(polyline);
-
-
-<!-- function addMarker() -->
-<!-- { -->
-    <!-- content.receiveText("sss"); -->
-    <!-- var point = new BMap.Point(116.404, 39.915); -->
-    <!-- var marker = new BMap.Marker(point); -->
-    <!-- map.addOverlay(marker); -->
-<!-- } -->
+var m_point = new BMap.Point(116.404, 39.915);
+var m_marker = new BMap.Marker(m_point);
+function addMarker()
+{
+    map.addOverlay(m_marker);
+    alert("Add Marker sucess!");
+}
 
 window.onload = function()
 {
@@ -114,83 +93,11 @@ window.onload = function()
                 function(message)
                 {
                     <!-- content.receiveText("sss"); -->
-                    var point = new BMap.Point(116.404, 39.915);
-                    var marker = new BMap.Marker(point);
-                    map.addOverlay(marker);
-                    alert("Add Marker sucess!" + message);
+                    addMarker();
+                    <!-- alert("Add Marker sucess!" + message); -->
                 }
-                <!-- function(message) -->
-                <!-- { -->
-                    <!-- alert("Received message:" + message); -->
-                <!-- } -->
             );
         }
     );
 }
-
-<!-- function addUrls(path, url){ -->
-    <!-- var div = document.getElementById("list"); -->
-    <!-- var anchor = document.createElement("a"); -->
-    <!-- anchor.href = url; -->
-    <!-- anchor.innerHTML = path; -->
-    <!-- div.appendChild(anchor); -->
-    <!-- var br = document.createElement("br"); -->
-    <!-- div.appendChild(br); -->
-	<!-- anchor.download=path; -->
-
-	<!-- getBase64(url) -->
-            <!-- .then(function(base64){ -->
-                  <!-- console.log(base64);//处理成功打印在控制台 -->
-            <!-- },function(err){ -->
-                  <!-- console.log(err);//打印异常信息 -->
-            <!-- }); -->
-    <!-- //调用创建iframe的函数 -->
-	<!-- //mm1(url,name) 	 -->
-<!-- } -->
-
-
-
-//传入图片路径，返回base64
-<!-- function getBase64(img){ -->
-	<!-- //var name= img. -->
-	<!-- function getBase64Image(img,width,height) {//width、height调用时传入具体像素值，控制大小 ,不传则默认图像大小 -->
-
-	  <!-- var canvas = document.createElement("canvas"); -->
-	  <!-- canvas.width = width ? width : img.width; -->
-	  <!-- canvas.height = height ? height : img.height; -->
-
-	  <!-- var ctx = canvas.getContext("2d"); -->
-	  <!-- ctx.drawImage(img, 0, 0, canvas.width, canvas.height); -->
-	  <!-- var dataURL = canvas.toDataURL(); -->
-	  <!-- //return dataURL; -->
-		<!-- var alink = document.createElement("a"); -->
-		<!-- alink.href = dataURL; -->
-		<!-- alink.download =img.src.split('?')[1].split('styles')[0]; -->
-		<!-- alink.click();  -->
-	<!-- } -->
-	<!-- var image = new Image(); -->
-	<!-- image.crossOrigin = ''; -->
-	<!-- image.src = img; -->
-	<!-- var deferred=$.Deferred(); -->
-	<!-- if(img){ -->
-	  <!-- image.onload =function (){ -->
-		<!-- deferred.resolve(getBase64Image(image,name));//将base64传给done上传处理 -->
-	  <!-- } -->
-	  <!-- return deferred.promise();//问题要让onload完成后再return sessionStorage['imgTest'] -->
-	<!-- } -->
-  <!-- } -->
-
-
-// function mm1(url,name)   
-// {   
-// 	var alink = document.createElement("a");
-// 	alink.href = url;
-// 	alink.download = name;
-// 	alink.click(); 
-// }   
-<!-- function findtiles(){ -->
-	<!-- var findAllTiles = downloadBaiduTiles(); -->
-	<!-- findAllTiles(map, addUrls); -->
-<!-- } -->
-
 </script>
