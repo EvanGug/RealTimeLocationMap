@@ -52,13 +52,13 @@ map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 map.enableDragging(true);    
 map.addControl(new BMap.NavigationControl());
 
-var b = new BMap.Bounds(new BMap.Point(115.463049,39.657865),new BMap.Point(117.029202,40.541792)); // 范围 左下角，右上角的点位置 
-try {    // js中尽然还有try catch方法，可以避免bug引起的错误
-	BMapLib.AreaRestriction.setBounds(map, b); // 已map为中心，已b为范围的地图
-} catch (e) {
-	// 捕获错误异常
-	alert(e);
-}
+<!-- var b = new BMap.Bounds(new BMap.Point(115.463049,39.657865),new BMap.Point(117.029202,40.541792)); // 范围 左下角，右上角的点位置  -->
+<!-- try {    // js中尽然还有try catch方法，可以避免bug引起的错误 -->
+	<!-- BMapLib.AreaRestriction.setBounds(map, b); // 已map为中心，已b为范围的地图 -->
+<!-- } catch (e) { -->
+	<!-- // 捕获错误异常 -->
+	<!-- alert(e); -->
+<!-- } -->
 //北京 116.405335,39.917787 var b = new BMap.Bounds(new BMap.Point(115.463049,39.657865),new BMap.Point(117.029202,40.541792)); // 范围 左下角，右上角的点位置 
 
 // var marker = new BMap.Marker(point);
@@ -73,12 +73,14 @@ try {    // js中尽然还有try catch方法，可以避免bug引起的错误
 // 		new BMap.Point(116.404, 42.915)
 // 	], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});
 // map.addOverlay(polyline);
-var m_point = new BMap.Point(116.404, 39.915);
-var m_marker = new BMap.Marker(m_point);
-function addMarker()
+<!-- var m_point = new BMap.Point(116.404, 39.915); -->
+<!-- var m_marker = new BMap.Marker(m_point); -->
+var m_marker = new BMap.Marker();
+function addMarker(X, Y)
 {
+    m_marker.setPosition(new BMap.Point(X, Y));
     map.addOverlay(m_marker);
-    alert("Add Marker sucess!");
+    alert("Add Marker sucess!" + X + "and" + Y);
 }
 
 window.onload = function()
@@ -90,10 +92,10 @@ window.onload = function()
             <!-- content.receiveText("sss"); -->
         
             content.sendText.connect(
-                function(message)
+                function(messageX, messageY)
                 {
                     <!-- content.receiveText("sss"); -->
-                    addMarker();
+                    addMarker(messageX, messageY);
                     <!-- alert("Add Marker sucess!" + message); -->
                 }
             );

@@ -20,17 +20,17 @@ MyMapView::MyMapView(QWidget *parent)
     m_webView->load(QUrl(QDir::currentPath() + "/demo.html"));
 
     m_webView->show();
-//    emit sendText("hello");
 }
 
 MyMapView::~MyMapView()
 {
+    m_webChannel->deregisterObject(this);
     delete ui;
 }
 
 void MyMapView::onSendTextButtonClicked()
 {
-    emit sendText("hello");
+    emit sendText(121.47709, 31.234694);
 }
 
 void MyMapView::resizeEvent(QResizeEvent *event)

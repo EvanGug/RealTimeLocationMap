@@ -15,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete ui;
     delete m_readText;
+    delete ui;
 }
 
 void MainWindow::on_decodeFileButton_clicked()

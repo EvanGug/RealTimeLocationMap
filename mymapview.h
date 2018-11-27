@@ -29,7 +29,7 @@ public slots:
 
 signals:
 
-    Q_INVOKABLE void sendText(const QString text);
+    Q_INVOKABLE void sendText(const double X, const double Y);
 
 private:
     Ui::MyMapView *ui;
