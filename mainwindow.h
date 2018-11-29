@@ -26,6 +26,7 @@ private:
     Ui::MainWindow *ui;
 
     ReadText *m_readText;
+    QVector<ReadText::Component> data;
 };
 
 #endif // MAINWINDOW_H

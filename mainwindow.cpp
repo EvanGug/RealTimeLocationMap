@@ -40,7 +40,7 @@ void MainWindow::on_decodeFileButton_clicked()
 void MainWindow::on_readButton_clicked()
 {
     m_readText->readSql();
-    QVector<ReadText::Component> data = m_readText->getData();
+    data = m_readText->getData();
 
     ui->tableWidget->setRowCount(data.size());
     for(int i = 0; i < data.size(); i++)
@@ -60,5 +60,6 @@ void MainWindow::on_readButton_clicked()
 
 void MainWindow::on_sendTextButton_clicked()
 {
-    ui->mapTab->onSendTextButtonClicked();
+//    QVector<ReadText::Component> data = m_readText->getData();
+    ui->mapTab->onSendTextButtonClicked(data);
 }

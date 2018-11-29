@@ -1,6 +1,7 @@
 #ifndef MYMAPVIEW_H
 #define MYMAPVIEW_H
 
+#include "readtext.h"
 #include <QWidget>
 #include <QWebEngineView>
 #include <QWebEnginePage>
@@ -18,7 +19,7 @@ public:
     explicit MyMapView(QWidget *parent = 0);
     ~MyMapView();
 
-    void onSendTextButtonClicked();
+    void onSendTextButtonClicked(const QVector<ReadText::Component> &data);
 
 private:
     void resizeEvent(QResizeEvent *event);
@@ -36,6 +37,8 @@ private:
     QWebEngineView *m_webView;
     QWebEnginePage *m_webPage;
     QWebChannel *m_webChannel;
+
+    int index = 0;
 };
 
 #endif // MYMAPVIEW_H

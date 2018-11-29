@@ -28,9 +28,20 @@ MyMapView::~MyMapView()
     delete ui;
 }
 
-void MyMapView::onSendTextButtonClicked()
+void MyMapView::onSendTextButtonClicked(const QVector<ReadText::Component> &data)
 {
-    emit sendText(121.47709, 31.234694);
+//    if (index == 0)
+//    {
+//        emit sendText(121.47709, 31.234694);
+//        index++;
+//    }
+//    else
+//        emit sendText(131.47709, 31.234694);
+    for(int i = 0; i < data.size(); i++)
+    {
+//        QString templocation = "(" + QString::number(data.at(i).m_coordinate.x()) + "," + QString::number(data.at(i).m_coordinate.y()) + ")";
+        emit sendText(data.at(i).m_coordinate.x(), data.at(i).m_coordinate.y());
+    }
 }
 
 void MyMapView::resizeEvent(QResizeEvent *event)
